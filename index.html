@@ -30,11 +30,12 @@
   <button id="send-button">Send Data</button>
 
 <script>
+  var currentState = ""
   document.getElementById('send-button').addEventListener('click', async () => {
     const response = await fetch('/api/trigger-pusher', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message: "Button was clicked!" })
+      body: JSON.stringify({ cst: currentState })
     });
     
     if (response.ok) {
