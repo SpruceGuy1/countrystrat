@@ -27,5 +27,20 @@
     Try publishing an event to channel <code>my-channel</code>
     with event name <code>my-event</code>.
   </p>
+  <button id="send-button">Send Data</button>
+
+<script>
+  document.getElementById('send-button').addEventListener('click', async () => {
+    const response = await fetch('/api/trigger-pusher', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: "Button was clicked!" })
+    });
+    
+    if (response.ok) {
+      console.log("Event triggered successfully!");
+    }
+  });
+</script>
 </body>
 </html>
